@@ -223,5 +223,5 @@ class Expedia(AbstractWebsite):
     @staticmethod
     def format_date(date_object):
         # Format the date as '10 May 2024'
-        formatted_date = date_object.strftime('%A, %B %d, %Y')
+        formatted_date = date_object.strftime('%A, %B %#d, %Y')
         return formatted_date
