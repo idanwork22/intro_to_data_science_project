@@ -168,7 +168,7 @@ class Expedia(AbstractWebsite):
             time.sleep(1)
             self.driver_class.driver.execute_script("window.scrollTo(0,100000)")
             logger.debug("Script - Scrolling down")
-            time.sleep(3)
+            time.sleep(2)
             for _ in range(1):
                 self.driver_class.driver.find_element(By.CLASS_NAME,
                                                       'uitk-button.uitk-button-medium.uitk-button-has-text.uitk-button-secondary').click()
@@ -183,10 +183,10 @@ class Expedia(AbstractWebsite):
         hotels_lst = []
         current_url = self.driver_class.driver.current_url
         logger.debug(f"Current URL: {current_url}")
-        time.sleep(2)
+        time.sleep(1)
         hotels_elements = self.driver_class.driver.find_elements(By.CLASS_NAME, "uitk-layout-flex.uitk-layout-flex-block-size-full-size.uitk-layout-flex-flex-direction-column.uitk-layout-flex-justify-content-space-between")
         logger.info(f"There are {len(hotels_elements)} hotels")
-        for hotel_element in hotels_elements:
+        for index_in_page, hotel_element in enumerate(hotels_elements):
             # Extract data using the specific class names inside each WebElement
             name = hotel_element.find_element(By.CLASS_NAME, "uitk-heading.uitk-heading-5.overflow-wrap.uitk-layout-grid-item.uitk-layout-grid-item-has-row-start").text
             try:
@@ -216,6 +216,7 @@ class Expedia(AbstractWebsite):
                 'name': name,
                 'rating': rating,
                 'price': price,
+                'index_in_page': index_in_page + 1,
                 'reviews_amount': reviews_amount,
             })
         return hotels_lst

@@ -49,9 +49,9 @@ class ManagerClass:
         time.sleep(0.5)
 
         self.logger.debug("Choosing people amount")
-        website_instance.choose_people_amount(adults=adults,
-                                              children=children,
-                                              room=room)
+        # website_instance.choose_people_amount(adults=adults,
+        #                                       children=children,
+        #                                       room=room)
 
         self.logger.debug("Calling to main iterator ")
         result = self.main_iterator_runner(website_instance=website_instance,

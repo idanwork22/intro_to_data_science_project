@@ -1,7 +1,6 @@
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
-from src.classes.singleton import SingletonMeta
 
 
 class DriverClass:

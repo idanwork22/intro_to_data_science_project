@@ -179,7 +179,7 @@ class Booking(AbstractWebsite):
             self.driver_class.driver.execute_script("window.scrollTo(0,100000)")
             logger.debug("Script - Scrolling down")
             time.sleep(3)
-            for _ in range(2):
+            for _ in range(3):
                 self.driver_class.driver.find_element(By.CLASS_NAME,
                                                       'a83ed08757.c21c56c305.bf0537ecb5.f671049264.deab83296e'
                                                       '.af7297d90d').click()
@@ -197,7 +197,7 @@ class Booking(AbstractWebsite):
         time.sleep(2)
         hotels_elements = self.driver_class.driver.find_elements(By.CLASS_NAME, "c1edfbabcb")
         logger.info(f"There are {len(hotels_elements)} hotels")
-        for hotel_element in hotels_elements:
+        for index_in_page, hotel_element in enumerate(hotels_elements):
             # Extract data using the specific class names inside each WebElement
             name = hotel_element.find_element(By.CSS_SELECTOR, "div[data-testid='title']").text
             try:
@@ -230,6 +230,7 @@ class Booking(AbstractWebsite):
                 'name': name,
                 'rating': rating,
                 'price': price,
+                'index_in_page': index_in_page+1,
                 'reviews_amount': reviews_amount
                 # 'bed_type': bed_type,
                 # 'center_distance': center_distance
