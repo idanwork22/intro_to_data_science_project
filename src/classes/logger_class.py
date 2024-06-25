@@ -8,7 +8,7 @@ class LoguruLogger:
         # remove default handler
         logger.remove()
         # configure console handler
-        logger.add(sys.stderr, level="INFO")
+        logger.add(sys.stderr, level="DEBUG")
         # configure the file handler
         logger.add("logs/project_logs.log", level="INFO")
 

@@ -172,17 +172,16 @@ class Booking(AbstractWebsite):
 
     def click_on_load_nore_results(self):
         try:
-            time.sleep(1)
+            time.sleep(1.5)
             self.driver_class.driver.execute_script("window.scrollTo(0,100000)")
             logger.debug("Script - Scrolling down")
-            time.sleep(1)
+            time.sleep(1.5)
             self.driver_class.driver.execute_script("window.scrollTo(0,100000)")
             logger.debug("Script - Scrolling down")
             time.sleep(3)
             for _ in range(3):
                 self.driver_class.driver.find_element(By.CLASS_NAME,
-                                                      'a83ed08757.c21c56c305.bf0537ecb5.f671049264.deab83296e'
-                                                      '.af7297d90d').click()
+                                                      'bf33709ee1.a190bb5f27.b9d0a689f2.bb5314095f.b81c794d25.da4da790cd').click()
                 logger.debug("Click - Load More Results Button")
                 time.sleep(2)
         except:
@@ -195,23 +194,23 @@ class Booking(AbstractWebsite):
         current_url = self.driver_class.driver.current_url
         logger.debug(f"Current URL: {current_url}")
         time.sleep(2)
-        hotels_elements = self.driver_class.driver.find_elements(By.CLASS_NAME, "c1edfbabcb")
+        hotels_elements = self.driver_class.driver.find_elements(By.CLASS_NAME, "fa298e29e2.b74446e476.e40c0c68b1.ea1d0cfcb7.d8991ab7ae.e8b7755ec7.ad0e783e41")
         logger.info(f"There are {len(hotels_elements)} hotels")
         for index_in_page, hotel_element in enumerate(hotels_elements):
             # Extract data using the specific class names inside each WebElement
             name = hotel_element.find_element(By.CSS_SELECTOR, "div[data-testid='title']").text
             try:
-                rating = hotel_element.find_element(By.CLASS_NAME, "a3b8729ab1.d86cee9b25").text
+                rating = hotel_element.find_element(By.CLASS_NAME, "b290e5dfa6.a5cc9f664c.c4b07b6aa8").text
             except Exception as e:
                 logger.error(f"Hotel : {name} doesnt have rating")
                 continue
             try:
-                price = hotel_element.find_element(By.CLASS_NAME, "f6431b446c.fbfd7c1165.e84eb96b1f").text
+                price = hotel_element.find_element(By.CLASS_NAME, "fa4a3a8221.b22052b420.f53c51ec80").text
             except Exception as e:
                 logger.error(f"Hotel : {name} doesnt have price")
                 continue
             try:
-                reviews_amount = hotel_element.find_element(By.CLASS_NAME, "abf093bdfe.f45d8e4c32.d935416c47").text
+                reviews_amount = hotel_element.find_element(By.CLASS_NAME, "b290e5dfa6.a5cc9f664c.c4b07b6aa8").text
             except Exception as e:
                 logger.error(f"Hotel : {name} doesnt have reviews amount")
                 continue
